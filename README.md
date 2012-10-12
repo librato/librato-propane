@@ -26,7 +26,12 @@ Note that if you're upgrading `librato-propane.js`, you'll need to open
 previous version.
 
 ## Usage
-Whenever a link to a Librato instrument (e.g.
+Propane shares a cookie store with Safari, so this hack relies on your having a
+current, authenticated session of the Librato account
+whose instruments are being linked to in Campfire. So start by [logging into Librato in Safari](https://metrics.librato.com)
+and (if necessary) switching into the correct account context.
+
+Now whenever a link to a Librato instrument (e.g.
 `https://metrics.librato.com/instruments/922`) is clicked in the Propane
 client, it will expand in place to a live, embedded chart with
 functioning tooltips and autorefresh enabled.
