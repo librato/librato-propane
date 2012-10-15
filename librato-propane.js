@@ -33,12 +33,18 @@ Campfire.LibratoExpander = Class.create({
         return;
       }
 
-      // Create the embed URL
-      //var embed_url = "http://0.0.0.0:3000/embedded_instruments/" + match[1] + match[2];
-      var embed_url = "https://metrics.librato.com/embedded_instruments/" + match[1] + match[2]
-
-      elem.onclick = function(ev){
+      elem.onclick = (function(ev){
+        //debugger
         ev.preventDefault();
+
+        // Create the embed URL
+        var append_char = '?';
+        if (ev.target.href.match(/\?/) != null){
+          append_char = '&';
+        }
+
+        var embed_url = ev.target.href + append_char + "iframe=1";
+
         var iframes = message.bodyElement().select('iframe');
         if (iframes.length == 1) {
           iframes[0].remove();
@@ -54,7 +60,7 @@ Campfire.LibratoExpander = Class.create({
             }
           })(message), 1800000);
         }
-      }
+      });
     }
   },
 
