@@ -34,7 +34,6 @@ Campfire.LibratoExpander = Class.create({
       }
 
       elem.onclick = (function(ev){
-        //debugger
         ev.preventDefault();
 
         // Create the embed URL
@@ -43,7 +42,27 @@ Campfire.LibratoExpander = Class.create({
           append_char = '&';
         }
 
-        var embed_url = ev.target.href + append_char + "iframe=1";
+        var embed_url = ev.target.href;
+
+        /// XXX: There's a bug in campfire, where URL's that end in '*'
+        // (e.g. https://metrics.librato.com/instruments/123?source=*foo*)
+        // get split into two elements, try to detect that and repair here.
+        //
+        // Have also been informed by 37S that this bug is currently
+        // not going to be fixed:
+        //
+        // "Right now, Campfire's URL detection isn't 100% perfect, so it breaks off at asterisks,
+        // like you noticed. When we tried updating that, overall Campfire
+        // performance went waaaaay down. Until we're able to fix this
+        // legitimately, I would recommend to use http://bitly.com to shorten
+        // your URLs."
+        // -37Signals Support
+        //
+        if(this.nextSibling.data == '*' || this.nextSibling.data == '=*') {
+          embed_url += this.nextSibling.data
+        }
+
+        embed_url = embed_url + append_char + "iframe=1";
 
         var iframes = message.bodyElement().select('iframe');
         if (iframes.length == 1) {
