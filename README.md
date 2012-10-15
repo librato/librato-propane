@@ -1,7 +1,7 @@
 librato-propane
 ===============
 
-A patch for the Propane Campfire application that expands links to Librato instruments into live,
+A patch for the [Propane](http://propaneapp.com/) Campfire application that expands links to Librato instruments into live,
 auto-refreshing charts through the magic of the [Librato Javascript
 SDK](http://blog.librato.com/2012/10/embeddable-charts.html).
 
