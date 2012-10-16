@@ -1,3 +1,5 @@
+// Propane extension to expand Librato instrument links
+
 Campfire.LibratoExpander = Class.create({
   initialize: function(chat) {
     this.chat = chat;
@@ -58,8 +60,10 @@ Campfire.LibratoExpander = Class.create({
         // your URLs."
         // -37Signals Support
         //
-        if(this.nextSibling.data == '*' || this.nextSibling.data == '=*') {
-          embed_url += this.nextSibling.data
+        if(this.nextSibling != null) {
+          if (this.nextSibling.data == '*' || this.nextSibling.data == '=*') {
+            embed_url += this.nextSibling.data
+          }
         }
 
         embed_url = embed_url + append_char + "iframe=1";
