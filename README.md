@@ -5,6 +5,8 @@ A patch for the [Propane](http://propaneapp.com/) Campfire application that expa
 auto-refreshing charts through the magic of the [Librato Javascript
 SDK](http://blog.librato.com/2012/10/embeddable-charts.html).
 
+![Screenshot](https://librato_images.s3.amazonaws.com/librato-propane.png)
+
 ## Requirements
 `librato-propane` leverages the [Javascript Responder
 Callbacks](http://help.propaneapp.com/discussions/announcements/58-whats-new-in-120)
